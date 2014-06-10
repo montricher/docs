@@ -87,6 +87,10 @@ JSON.stringify(beast); //=> '{"name": "Crocotillion"}'
 
 ## Ruby
 
+There are some similar functions in the `CGI` module and the `Addressable` gem,
+but the functions provided by `Rack::Utils` are more robust, and Rack isn't such
+a big dependency.
+
 ### FROM Query String TO Ruby Hash
 
 ```ruby
@@ -105,11 +109,17 @@ Rack::Utils.build_query({"name" => "Crocotillion"}) #=> "name=Crocotillion"
 
 ### FROM Query String TO Javascript Object
 
+You'll need the [deparam] jQuery plugin for this. Fortunately, it's probably the least
+common of all the techniques documented on this sheet.
+
 ```js
 $.deparam("name=Crocotillion"); //=> {"name": "Crocotillion"}
 ```
 
 ### FROM Javascript Object TO Query String
+
+There are lots of ways to do this without any dependencies outside of vanilla JavaScript,
+but if you already have jQuery, you may as well just use `$.param()`.
 
 ```js
 $.param({"name": "Crocotillion"}); //=> "name=Crocotillion"
